@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Study Notes: Visual Metaphor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0f172a;
+            --surface: rgba(30, 41, 59, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #f472b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            margin-top: 40px;
+            display: inline-block;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+
+        /* Q&A Cards */
+        .qa-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-card {
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .question::before {
+            content: 'Q:';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .answer {
+            color: var(--text-muted);
+            padding-left: 32px;
+            position: relative;
+        }
+
+        .answer::before {
+            content: 'A:';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .answer ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .answer li {
+            margin-bottom: 5px;
+        }
+
+        /* End of Lesson Section - Exact Formatting */
+        .eol-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 0 16px 16px 0;
+            margin-top: 20px;
+        }
+
+        .eol-item {
+            margin-bottom: 25px;
+        }
+
+        .eol-q {
+            font-weight: 600;
+            color: var(--text-main);
+            display: inline;
+        }
+
+        .eol-a {
+            color: var(--text-muted);
+            display: inline;
+        }
+        
+        .eol-a-block {
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .eol-list {
+            margin-top: 10px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .eol-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+        }
+
+        .eol-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Q&A Study Notes: <span>Visual Metaphor</span></h1>
+        </header>
+
+        <div class="qa-grid">
+            <div class="qa-card">
+                <div class="question">What are the important skills needed when designing information graphics?</div>
+                <div class="answer">Designers need the ability to express ideas through symbols, icons, illustrations, and typography. They must also establish hierarchies of visual importance, create effective visual metaphors, and translate information into functional, beautiful visual forms.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">Why is visual communication so important?</div>
+                <div class="answer">It is difficult for viewers to understand and digest large amounts of data. Communication design relies on smart solutions to simplify and deliver messages effectively.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What is a Visual Metaphor?</div>
+                <div class="answer">It is the representation of a person, place, thing, or idea using a visual image that suggests a particular association or point of similarity. It is a critical tool to ensure that the intended meaning of a message is clearly understood by the recipient.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">How do shapes communicate visually?</div>
+                <div class="answer">
+                    Simple geometric shapes carry historical and psychological meanings:
+                    <ul>
+                        <li><strong>Circles:</strong> Communicate wholeness or unity.</li>
+                        <li><strong>Triangles:</strong> Communicate energetic and direct movement.</li>
+                        <li><strong>Squares:</strong> Communicate stability and strength.</li>
+                        <li><strong>Lines:</strong> Variations in thickness and stroke can create depth and direct movement.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">Why do some information graphics fail?</div>
+                <div class="answer">A major challenge is maintaining a sense of beauty. Information graphics often fail because they are visually too busy, and the human eye can only process a limited amount of data at one time.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">How does color play a role in visual metaphors?</div>
+                <div class="answer">Understanding how humans perceive and classify colors allows designers to make strategic decisions on how to refine motion graphic elements to evoke the right emotions (e.g., blue for trust, red for energy, green for eco-friendly).</div>
+            </div>
+        </div>
+
+        <h2>Answers to the End-of-Lesson Questions</h2>
+        
+        <div class="eol-section">
+            <div class="eol-item">
+                <div class="eol-q">1. What are the important skills to have when designing information graphic?</div>
+                <div class="eol-a-block">The important skills include the ability to:</div>
+                <ul class="eol-list">
+                    <li>Express ideas through symbols, icons, illustrations, and typography.</li>
+                    <li>Establish hierarchies of visual importance.</li>
+                    <li>Create effective visual metaphors.</li>
+                    <li>Translate information into beautiful visual forms.</li>
+                </ul>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">2. Why visual information is important?</div><div class="eol-a"> Visual information is important because it can be difficult for viewers to understand and digest large amounts of data. Translating this data into functional and beautiful visual forms simplifies the data and helps deliver messages effectively.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">3. What is the visual metaphor?</div><div class="eol-a"> A visual metaphor is the representation of a person, place, thing, or idea by means of a visual image that suggests a particular association or point of similarity.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">4. List down the type of visual that can be used to represent metaphor.</div>
+                <div class="eol-a-block">Types of visuals that can be used include:</div>
+                <ul class="eol-list">
+                    <li>Iconography (icons and symbols).</li>
+                    <li>Pictorial metaphors (everyday, tactile objects).</li>
+                    <li>Simple geometric shapes (circles, triangles, squares, lines).</li>
+                    <li>Colors.</li>
+                    <li>Stock visual metaphors (such as standard emojis or memes).</li>
+                </ul>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">5. How to develop a visual metaphor?</div>
+                <div class="eol-a-block">To develop a visual metaphor, you can repurpose everyday objects and compose them to signify your data. You must design a logical system that communicates the information effectively. Using unexpected visual metaphors can pleasantly surprise the viewer and capture their attention. Additionally, you should make strategic decisions regarding the use of shapes and colors based on their psychological meanings to refine the overall message.</div>
+            </div>
+        </div>
+
+        <div class="nav-btn-container">
+            <a href="home.html" class="nav-btn">← Back to Home</a>
+        </div>
+
+
+    </div>
+</body>
+</html>

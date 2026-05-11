@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Study Notes: Visual Storytelling</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0f172a;
+            --surface: rgba(30, 41, 59, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #f472b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            margin-top: 40px;
+            display: inline-block;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+
+        /* Q&A Cards */
+        .qa-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-card {
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .question::before {
+            content: 'Q:';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .answer {
+            color: var(--text-muted);
+            padding-left: 32px;
+            position: relative;
+        }
+
+        .answer::before {
+            content: 'A:';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .answer ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .answer li {
+            margin-bottom: 5px;
+        }
+
+        /* End of Lesson Section - Exact Formatting */
+        .eol-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 0 16px 16px 0;
+            margin-top: 20px;
+        }
+
+        .eol-item {
+            margin-bottom: 20px;
+        }
+
+        .eol-q {
+            font-weight: 600;
+            color: var(--text-main);
+            display: inline;
+        }
+
+        .eol-a {
+            color: var(--text-muted);
+            display: inline;
+        }
+
+        .eol-list {
+            margin-top: 10px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .eol-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+        }
+
+        .eol-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Q&A Study Notes: <span>Visual Storytelling</span></h1>
+        </header>
+
+        <div class="qa-grid">
+            <div class="qa-card">
+                <div class="question">What are the roles and elements of motion graphics in social media?</div>
+                <div class="answer">Their roles are explaining concepts, branding, marketing, and creating awareness. Key elements include explainer videos, GIFs, UI animations, icons, infographics, and logos.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What is the purpose and framework of Visual Storytelling?</div>
+                <div class="answer">The purpose is to get attention, tell a story, trigger emotions, and drive quick action. The framework relies on four core elements: Message, Conflict, Characters, and Plot.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">How are core messages categorized?</div>
+                <div class="answer">
+                    <ul>
+                        <li><strong>To pitch:</strong> Focuses on goals and what you do.</li>
+                        <li><strong>To report:</strong> Focuses on what happened and its impact.</li>
+                        <li><strong>To sell:</strong> Focuses on products, problems, and results.</li>
+                        <li><strong>To present:</strong> Focuses on a topic or issue.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are common character goals and emotional needs?</div>
+                <div class="answer">Goals include winning, escaping death, stopping something bad, retrieving, or delivering. Emotional needs include certainty, variety, significance, connection, growth, and contribution.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are the three game narrative types?</div>
+                <div class="answer">
+                    <ul>
+                        <li><strong>Linear:</strong> Fixed events in the same order.</li>
+                        <li><strong>Branching:</strong> Player choices create multiple story paths.</li>
+                        <li><strong>Open:</strong> Players freely explore and trigger story blocks in any order.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">How can you generate new story ideas?</div>
+                <div class="answer">Use personal experience, news, or combine different concepts. Ask "What if...?" and change one element of a familiar story. Always avoid your very first idea, as it is usually a cliché.</div>
+            </div>
+        </div>
+
+        <h2>Answers to the End-of-Lesson Questions</h2>
+        
+        <div class="eol-section">
+            <div class="eol-item">
+                <div class="eol-q">1. What are the roles of motion graphics in social media?</div><div class="eol-a">The roles of motion graphics in social media include explaining concepts, branding, marketing, and creating awareness.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">2. What is the main purpose of Visual Storytelling?</div><div class="eol-a">The main purpose of visual storytelling is to get people's attention, tell your story, trigger their emotions, and activate them to take action quickly.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">3. What is the type of Core messages in motion graphics?</div><div class="eol-a">Core messages are categorized into four types: "To pitch", "To report", "To sell", and "To present".</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">4. List down the character's goal in visual narration.</div>
+                <div class="eol-a">A character's goals typically fall into these categories:</div>
+                <ul class="eol-list">
+                    <li>To Win.</li>
+                    <li>To Escape Death.</li>
+                    <li>To Stop (something bad from happening).</li>
+                    <li>To Retrieve (a treasure or person).</li>
+                    <li>To Deliver (a person or thing).</li>
+                </ul>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">5. List down three types of narration in computer games.</div>
+                <div class="eol-a">The three types of narration in computer games are:</div>
+                <ul class="eol-list">
+                    <li>Linear Narratives.</li>
+                    <li>Branching Narratives.</li>
+                    <li>Open Narratives.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav-btn-container">
+            <a href="home.html" class="nav-btn">← Back to Home</a>
+        </div>
+
+
+    </div>
+</body>
+</html>

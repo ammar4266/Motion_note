@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Study Notes: Motion Choreography</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0f172a;
+            --surface: rgba(30, 41, 59, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #f472b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            margin-top: 40px;
+            display: inline-block;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+
+        /* Q&A Cards */
+        .qa-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-card {
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .question::before {
+            content: 'Q:';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .answer {
+            color: var(--text-muted);
+            padding-left: 32px;
+            position: relative;
+        }
+
+        .answer::before {
+            content: 'A:';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .answer ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .answer li {
+            margin-bottom: 5px;
+        }
+
+        /* End of Lesson Section - Exact Formatting */
+        .eol-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 0 16px 16px 0;
+            margin-top: 20px;
+        }
+
+        .eol-item {
+            margin-bottom: 25px;
+        }
+
+        .eol-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .eol-q {
+            font-weight: 600;
+            color: var(--text-main);
+            display: inline;
+        }
+
+        .eol-a {
+            color: var(--text-muted);
+            display: inline;
+        }
+        
+        .eol-a-block {
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .eol-list {
+            margin-top: 10px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .eol-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+        }
+
+        .eol-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Navigation Buttons */
+        .nav-btn-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Q&A Study Notes: <span>Motion Choreography</span></h1>
+        </header>
+
+        <div class="qa-grid">
+            <div class="qa-card">
+                <div class="question">Why do we choreograph motion in motion graphics?</div>
+                <div class="answer">Motion can be choreographed to impart knowledge, communicate information, convey emotions, and express pure aesthetic beauty. The method chosen to move an element across the screen can heavily enhance its meaning. For example, a line of text that animates slowly while fading up from black might imbue the scene with a sense of mystery. Conversely, if the same text flips over and whizzes across the screen, it may express a sense of playfulness or urgency. Ultimately, the motion itself can be the message.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are the main examples of Spatial Transformations?</div>
+                <div class="answer">
+                    Spatial transformations include:
+                    <ul>
+                        <li><strong>Positioning:</strong> The translation of the x, y, or z axis.</li>
+                        <li><strong>Orientation:</strong> Rotation that involves changing the angle the object faces around a central anchor point (point of origin).</li>
+                        <li><strong>Size:</strong> The relative scale of an object inside the frame.</li>
+                    </ul>
+                    These properties can be combined, allowing you to animate all properties simultaneously.
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">How do direction and motion paths work in choreography?</div>
+                <div class="answer">
+                    Motion paths specify the course of travel that elements take over a given time interval.
+                    <ul>
+                        <li><strong>Linear:</strong> Travel in a straight line in predictable, linear directions (e.g., pendulums, wind-up toys).</li>
+                        <li><strong>Nonlinear:</strong> Travel on a curve in unpredictable, erratic ways (e.g., water, or tree branches affected by the wind).</li>
+                        <li><strong>Arcs:</strong> With the exception of mechanical devices, most actions travel in arcs, which are slightly circular paths (e.g., gravity or human body joints).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">How does frame mobility (camera movement) play a role in motion graphics?</div>
+                <div class="answer">Frame mobility is achieved through actual or simulated camera movement. It breathes life into scenes and helps achieve various dynamic compositional framings. Common camera techniques include the pan, whip pan, tilt, dolly, zoom, boom/jib, and crane shots.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">Is composition important in motion graphics?</div>
+                <div class="answer">Yes, in conjunction with camera movement, establishing a correct composition within the frame helps to build the plot or the major idea being conveyed.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are the 12 Principles of Animation applied in motion graphics?</div>
+                <div class="answer">The principles include Squash and Stretch, Anticipation, Arcs, Ease In & Ease Out, Appeal, Timing, Solid Drawing, Exaggeration, Pose to Pose, Staging, Secondary Action, and Follow Through and Overlap.</div>
+            </div>
+        </div>
+
+        <h2>Answers to the End-of-Lesson Questions</h2>
+        
+        <div class="eol-section">
+            <div class="eol-item">
+                <div class="eol-q">1. Why do we need to choreograph the movement in motion graphics?</div>
+                <div class="eol-a-block">We choreograph movement to impart knowledge, communicate information, convey emotions, and express pure aesthetic beauty. The method chosen to move an element enhances its meaning, meaning the motion itself can effectively become the message.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">2. What are the examples of spatial transformation?</div>
+                <div class="eol-a-block">Examples of spatial transformation include positioning (translating the x, y, or z axis), orientation (rotation involving changing the angle the object faces around an anchor point), and size (relative scale inside the frame).</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">3. How the movement of camera play an important role in motion graphics?</div>
+                <div class="eol-a-block">Through actual or simulated movement, the camera breathes life into scenes and achieves various compositional framings that enhance the visual narrative.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">4. What is the example of camera techniques and its effects on emotion.</div>
+                <div class="eol-a-block">Examples of camera techniques include the pan, whip pan, tilt, dolly, zoom, and crane shots. While the specific emotional effects of each individual technique vary, overall camera mobility breathes life into the scene and helps establish the necessary mood and compositional framing for the narrative.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">5. Do the composition is important in motion graphics? How?</div>
+                <div class="eol-a-block">Yes, composition is highly important. In conjunction with camera movement, a correct composition within the frame is essential because it helps build the plot or the major idea being conveyed.</div>
+            </div>
+        </div>
+
+        <div class="nav-btn-container">
+            <a href="home.html" class="nav-btn">← Back to Home</a>
+        </div>
+
+    </div>
+</body>
+</html>

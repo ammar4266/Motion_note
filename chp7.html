@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Study Notes: Elements & Principles of Motion Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0f172a;
+            --surface: rgba(30, 41, 59, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #f472b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            margin-top: 40px;
+            display: inline-block;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 5px;
+        }
+
+        /* Q&A Cards */
+        .qa-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-card {
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .question::before {
+            content: 'Q:';
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .answer {
+            color: var(--text-muted);
+            padding-left: 32px;
+            position: relative;
+        }
+
+        .answer::before {
+            content: 'A:';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .answer ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .answer li {
+            margin-bottom: 8px;
+        }
+
+        /* End of Lesson Section */
+        .eol-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 0 16px 16px 0;
+            margin-top: 20px;
+        }
+
+        .eol-note {
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .eol-item {
+            margin-bottom: 25px;
+        }
+
+        .eol-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .eol-q {
+            font-weight: 600;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .eol-a-block {
+            color: var(--text-muted);
+            padding-left: 15px;
+            border-left: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* Navigation Buttons */
+        .nav-btn-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Q&A Study Notes: <br><span>Elements & Principles of Motion Design</span></h1>
+        </header>
+
+        <div class="qa-grid">
+            <div class="qa-card">
+                <div class="question">How have computers impacted the creation of motion graphics?</div>
+                <div class="answer">Before computers were widely available, motion graphics were costly and time-consuming, limiting their use to high-budget film and TV. Today, desktop programs (like After Effects, Blender, Cinema 4D) have made producing motion graphics highly accessible and reduced costs. It continues to evolve with sweeping camera paths and 3D elements.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What is the difference between Raster and Vector graphics?</div>
+                <div class="answer">
+                    <ul>
+                        <li><strong>Raster (Bitmap):</strong> Pixel-based graphics. They are best for editing photos and continuous tone images with soft color blends. They do not scale up optimally (lose quality/become pixelated), and detailed images result in large file sizes. (e.g., .bmp, .jpg, .png)</li>
+                        <li><strong>Vector:</strong> Shapes based on mathematical calculations between points. They are best for logos, illustrations, and technical drawings. They are resolution-independent, meaning they can be scaled to any size without losing quality, and maintain a small file size. (e.g., .eps, .ai)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are the core Design Elements (building materials) in motion design?</div>
+                <div class="answer">
+                    <ul>
+                        <li><strong>Line:</strong> The path between two locations; used to lead the viewer's eye.</li>
+                        <li><strong>Shape:</strong> A 2D region enclosed by an outline (Organic/natural vs. Geometric/mathematical).</li>
+                        <li><strong>Colour:</strong> Used to convey mood, light, and dimension based on colour theory.</li>
+                        <li><strong>Texture:</strong> How an object appears or feels (Tactile/physical touch vs. Visual/imagined feel).</li>
+                        <li><strong>Value:</strong> Tone (brightness) or colour (hue) that provides texture, direction, or emphasis (e.g., drop shadows).</li>
+                        <li><strong>Space:</strong> Effective layout and use of white space to prevent overwhelming the viewer.</li>
+                        <li><strong>Image:</strong> Photos or illustrations that catch attention, provide context, and set a mood.</li>
+                        <li><strong>Sound:</strong> Speech, music, or effects (natural or unnatural) that emphasize or counterpoint the visual using amplitude, pitch, and duration.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are Design Principles?</div>
+                <div class="answer">If design elements are the "building materials," design principles are the "assembly guidelines" used to arrange and combine these materials into a pleasing composition.</div>
+            </div>
+
+            <div class="qa-card">
+                <div class="question">What are the key Design Principles used in motion graphics?</div>
+                <div class="answer">
+                    <ul>
+                        <li><strong>Alignment:</strong> Positioning the edges or centers of elements in a consistent line to create order.</li>
+                        <li><strong>Symmetry & Balance:</strong> Symmetry creates a reflection of halves. Balance can be symmetrical, asymmetrical, or radial.</li>
+                        <li><strong>Proportion:</strong> The relationships of relative height, width, depth, area, or duration. It defines the scale between elements.</li>
+                        <li><strong>Figure/Ground:</strong> How one element appears to sit above other elements on a flat 2D plane (using contrast or implied continuation).</li>
+                        <li><strong>Similarity:</strong> Elements segregated by space may appear unified if they share a common color, trajectory, or figure/ground index.</li>
+                        <li><strong>Contrast:</strong> Using opposing colors/tones, alternating directions, or extremes of scale. Subtle differences look like mistakes, so contrast should be distinct.</li>
+                        <li><strong>Change:</strong> Can occur relative to the element itself (grow, spin, fade) or relative to other elements. Changing characteristics implies physical behaviors (e.g., slow objects have mass, fast objects have power).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2>Answers to Key Concept Questions</h2>
+        
+        <div class="eol-section">
+            <p class="eol-note">(Note: Explicit end-of-lesson questions were not provided in this specific slide deck, so here are the fundamental takeaways based on the lecture's core concepts)</p>
+            
+            <div class="eol-item">
+                <div class="eol-q">1. Why are vector graphics preferred for logos and illustrations over raster graphics?</div>
+                <div class="eol-a-block">Vector graphics are mathematical calculations rather than pixels, meaning they are resolution-independent. They can be scaled to any size without a loss of quality, unlike raster graphics which become pixelated when enlarged.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">2. What are the two main types of shapes and textures?</div>
+                <div class="eol-a-block">Shapes are categorized as either Organic (naturally occurring) or Geometric (angular and mathematically consistent). Textures are categorized as either Tactile (the actual physical sensation of touch) or Visual (the imagined feel of an illustrated surface).</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">3. How does the design principle of "Change" affect a motion graphics composition?</div>
+                <div class="eol-a-block">Change creates dynamics over time. An element can change its own appearance (grow, shrink, morph) or change relative to other elements (one moves while the other is static). This change implies physical traits extending beyond the visual, such as implying mass, power, or distance.</div>
+            </div>
+
+            <div class="eol-item">
+                <div class="eol-q">4. What role does "Space" play in a visual layout?</div>
+                <div class="eol-a-block">Making effective use of space—particularly white space (the area surrounding the main point)—prevents the layout from becoming overcrowded. It helps guide the viewer's eye exactly where the designer intends.</div>
+            </div>
+        </div>
+
+        <div class="nav-btn-container">
+            <a href="home.html" class="nav-btn">← Back to Home</a>
+        </div>
+
+    </div>
+</body>
+</html>
